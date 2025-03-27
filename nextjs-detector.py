@@ -12,6 +12,20 @@ def log(message: str):
     print(message)
     sys.stdout.flush()
 
+def print_banner():
+    """Prints the ASCII art banner."""
+    banner = r"""
+  _   _           _       _  _____   _____       _            _             
+ | \ | |         | |     | |/ ____| |  __ \     | |          | |            
+ |  \| | _____  _| |_    | | (___   | |  | | ___| |_ ___  ___| |_ ___  _ __ 
+ | . ` |/ _ \ \/ / __|   | |\___ \  | |  | |/ _ \ __/ _ \/ __| __/ _ \| '__|
+ | |\  |  __/>  <| || |__| |____) | | |__| |  __/ ||  __/ (__| || (_) | |   
+ |_| \_|\___/_/\_\\__\____/|_____/  |_____/ \___|\__\___|\___|\__\___/|_|   
+                                                                                                                                                                                                             
+    """
+    print(banner)
+    print("Next.js Detector by n1t3d0gsec\n")
+
 def is_vulnerable_version(version: str) -> bool:
     """Check if detected version is in the vulnerable range"""
     if not version:
@@ -99,6 +113,7 @@ def save_results(results_list: list, output_file: str):
         log(f"\n[+] Results saved to {filename}")
 
 def main():
+    print_banner() 
     parser = argparse.ArgumentParser(description='Check websites for Next.js and version vulnerabilities')
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-u', '--url', help='Single URL to check')
